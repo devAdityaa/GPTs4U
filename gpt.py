@@ -10,8 +10,7 @@ app = FastAPI()
 
 #GPT 3.5
 @app.post('/gpt-3.5-turbo')
-def gptTurbo(data :list = Body(...)):
-    messages = data[0]
+def gptTurbo(messages :list = Body(...)):
     response = g4f.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=messages #[{"role": "user", "content": prompt}]
@@ -21,8 +20,7 @@ def gptTurbo(data :list = Body(...)):
 
 #GPT 4 
 @app.post('/bingChat')
-def bingGPT4(data :list = Body(...)):
-    messages = data[0]
+def bingGPT4(messages :list = Body(...)):
     response = g4f.ChatCompletion.create(
         model=g4f.models.default,
         messages=messages, #[{"role": "user", "content": prompt}]
@@ -31,8 +29,7 @@ def bingGPT4(data :list = Body(...)):
     return response
 
 @app.post('/bardChat')
-def bardGPT4(data :list = Body(...)):
-    messages = data[0]
+def bardGPT4(messages :list = Body(...)):
     response = g4f.ChatCompletion.create(
         model=g4f.models.default,
         messages=messages, #[{"role": "user", "content": prompt}]
@@ -41,8 +38,7 @@ def bardGPT4(data :list = Body(...)):
     return response
 
 @app.post('/geekGPT')
-def geekGPT(data :list = Body(...)):
-    messages = data[0]
+def geekGPT(messages :list = Body(...)):
     response = g4f.ChatCompletion.create(
         model=g4f.models.default,
         messages=messages, #[{"role": "user", "content": prompt}]
@@ -51,8 +47,7 @@ def geekGPT(data :list = Body(...)):
     return response
 
 @app.post('/liaobots')
-def liaobots(data :list = Body(...)):
-    messages = data[0]
+def liaobots(messages :list = Body(...)):
     response = g4f.ChatCompletion.create(
         model=g4f.models.default,
         messages=messages, #[{"role": "user", "content": prompt}]
@@ -61,8 +56,7 @@ def liaobots(data :list = Body(...)):
     return response
 
 @app.post('/phind')
-def liaobots(data :list = Body(...)):
-    messages = data[0]
+def liaobots(messages :list = Body(...)):
     response = g4f.ChatCompletion.create(
         model=g4f.models.default,
         messages=messages, #[{"role": "user", "content": prompt}]
@@ -72,8 +66,7 @@ def liaobots(data :list = Body(...)):
 
 #Other LLMs
 @app.post('/davinci3')
-def davinci3(data :list = Body(...)):
-    messages = data[0]
+def davinci3(messages :list = Body(...)):
     response = g4f.ChatCompletion.create(
         model="text-davinci-003",
         messages=messages, #[{"role": "user", "content": prompt}]
@@ -81,7 +74,7 @@ def davinci3(data :list = Body(...)):
     return response
 
 @app.post('/davinci2')
-def davinci2(data :list = Body(...)):
+def davinci2(messages :list = Body(...)):
     messages = data[0]
     response = g4f.ChatCompletion.create(
         model="text-davinci-002",
@@ -90,8 +83,7 @@ def davinci2(data :list = Body(...)):
     return response
 
 @app.post('/curie')
-def curie(data :list = Body(...)):
-    messages = data[0]
+def curie(messages :list = Body(...)):
     response = g4f.ChatCompletion.create(
         model="text-curie-001",
         messages=messages, #[{"role": "user", "content": prompt}]
@@ -99,8 +91,7 @@ def curie(data :list = Body(...)):
     return response
 
 @app.post('/code-davinci2')
-def davinciCode(data :list = Body(...)):
-    messages = body[0]
+def davinciCode(messages :list = Body(...)):
     response = g4f.ChatCompletion.create(
         model="code-davinci-002",
         messages=messages, #[{"role": "user", "content": prompt}]
@@ -109,8 +100,7 @@ def davinciCode(data :list = Body(...)):
 
 
 @app.post('/ada')
-def ada(data :list = Body(...)):
-    messages = data[0]
+def ada(messages :list = Body(...)):
     response = g4f.ChatCompletion.create(
         model="text-ada-001",
         messages=messages, #[{"role": "user", "content": prompt}]
@@ -118,8 +108,7 @@ def ada(data :list = Body(...)):
     return response
 
 @app.post('/babbage')
-def babbage(data :list = Body(...)):
-    messages = data[0]
+def babbage(messages :list = Body(...)):
     response = g4f.ChatCompletion.create(
         model="text-babbage-001",
         messages=messages, #[{"role": "user", "content": prompt}]
