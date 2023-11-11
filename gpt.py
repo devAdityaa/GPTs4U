@@ -9,15 +9,22 @@ app = FastAPI()
 #Models endpoints
 
 #GPT 3.5
-@app.post('/gpt-3.5-turbo')
-def gptTurbo(messages :list = Body(...)):
+@app.post('/chatbase')
+def cbase(messages :list = Body(...)):
     response = g4f.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=messages #[{"role": "user", "content": prompt}]
     )
     return response
 
-
+@app.post('/llama2')
+def llama2(messages :list = Body(...)):
+    response = g4f.ChatCompletion.create(
+        model=g4f.models.default,
+        messages=messages, #[{"role": "user", "content": prompt}]
+        provider=g4f.Provider.Llama2
+    )
+    return response
 #GPT 4 
 @app.post('/bingChat')
 def bingGPT4(messages :list = Body(...)):
@@ -55,14 +62,7 @@ def liaobots(messages :list = Body(...)):
     )
     return response
 
-@app.post('/phind')
-def liaobots(messages :list = Body(...)):
-    response = g4f.ChatCompletion.create(
-        model=g4f.models.default,
-        messages=messages, #[{"role": "user", "content": prompt}]
-        provider=g4f.Provider.Phind
-    )
-    return response
+
 
 #Other LLMs
 @app.post('/davinci3')
@@ -74,7 +74,7 @@ def davinci3(messages :list = Body(...)):
     return response
 
 @app.post('/davinci2')
-def davinci2(messages :list = Body(...)):
+def davinci2(data :list = Body(...)):
     messages = data[0]
     response = g4f.ChatCompletion.create(
         model="text-davinci-002",
