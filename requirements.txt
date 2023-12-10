@@ -1,4 +1,4 @@
 fastapi==0.96.1
 uvicorn==0.20.0
-g4f==0.1.8.1
+git+https://github.com/xtekky/gpt4free
 tiktoken==0.5.1

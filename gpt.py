@@ -6,61 +6,82 @@ from typing import Annotated
 
 app = FastAPI()
 
+#Handling Errors
+def error_handler(e:Exception):
+    return {"error":str(e)}
 #Models endpoints
 
 #GPT 3.5
 @app.post('/chatbase')
 def cbase(messages :list = Body(...)):
-    response = g4f.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=messages #[{"role": "user", "content": prompt}]
-    )
-    return response
+    try:
+        response = g4f.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=messages #[{"role": "user", "content": prompt}]
+        )
+        return response
+    except Exception as e:
+        return error_handler(e)
 
 @app.post('/llama2')
 def llama2(messages :list = Body(...)):
-    response = g4f.ChatCompletion.create(
-        model=g4f.models.default,
-        messages=messages, #[{"role": "user", "content": prompt}]
-        provider=g4f.Provider.Llama2
-    )
-    return response
+    try:
+        response = g4f.ChatCompletion.create(
+            model=g4f.models.default,
+            messages=messages, #[{"role": "user", "content": prompt}]
+            provider=g4f.Provider.Llama2
+        )
+        return response
+    except Exception as e:
+        return error_handler(e)
 #GPT 4 
 @app.post('/bingChat')
 def bingGPT4(messages :list = Body(...)):
-    response = g4f.ChatCompletion.create(
-        model=g4f.models.default,
-        messages=messages, #[{"role": "user", "content": prompt}]
-        provider=g4f.Provider.Bing
-    )
-    return response
+    try:
+        response = g4f.ChatCompletion.create(
+            model=g4f.models.default,
+            messages=messages, #[{"role": "user", "content": prompt}]
+            provider=g4f.Provider.Bing
+        )
+        return response
+    except Exception as e:
+        return error_handler(e)
 
 @app.post('/bardChat')
 def bardGPT4(messages :list = Body(...)):
-    response = g4f.ChatCompletion.create(
-        model=g4f.models.default,
-        messages=messages, #[{"role": "user", "content": prompt}]
-        provider=g4f.Provider.Bard
-    )
-    return response
+    try:
+        response = g4f.ChatCompletion.create(
+            model=g4f.models.default,
+            messages=messages, #[{"role": "user", "content": prompt}]
+            provider=g4f.Provider.Bard
+        )
+        return response
+    except Exception as e:
+        return error_handler(e)
 
 @app.post('/geekGPT')
 def geekGPT(messages :list = Body(...)):
-    response = g4f.ChatCompletion.create(
-        model=g4f.models.default,
-        messages=messages, #[{"role": "user", "content": prompt}]
-        provider=g4f.Provider.GeekGpt
-    )
-    return response
+    try:
+        response = g4f.ChatCompletion.create(
+            model=g4f.models.default,
+            messages=messages, #[{"role": "user", "content": prompt}]
+            provider=g4f.Provider.GeekGpt
+        )
+        return response
+    except Exception as e:
+        return error_handler(e)
 
 @app.post('/liaobots')
 def liaobots(messages :list = Body(...)):
-    response = g4f.ChatCompletion.create(
-        model=g4f.models.default,
-        messages=messages, #[{"role": "user", "content": prompt}]
-        provider=g4f.Provider.Liaobots
-    )
-    return response
+    try:
+        response = g4f.ChatCompletion.create(
+            model=g4f.models.default,
+            messages=messages, #[{"role": "user", "content": prompt}]
+            provider=g4f.Provider.Liaobots
+        )
+        return response
+    except Exception as e:
+        return error_handler(e)
 
 
 
