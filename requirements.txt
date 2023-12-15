@@ -1,4 +1,4 @@
-fastapi
-uvicorn
-g4f
-tiktoken
+fastapi==0.96.1
+uvicorn==0.20.0
+git+https://github.com/xtekky/gpt4free
+tiktoken==0.5.1
