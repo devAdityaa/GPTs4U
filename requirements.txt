@@ -1,5 +1,5 @@
 fastapi==0.96.1
 uvicorn==0.20.0
-g4f
+git+https://github.com/xtekky/gpt4free
 tiktoken==0.5.1
 Brotli
