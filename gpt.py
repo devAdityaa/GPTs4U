@@ -161,3 +161,27 @@ def geekGPT(messages :list = Body(...)):
     except Exception as e:
         return error_handler(e)
     
+@app.post('/koala')
+def geekGPT(messages :list = Body(...)):
+    try:
+        response = g4f.ChatCompletion.create(
+            model=g4f.models.default,
+            messages=messages, #[{"role": "user", "content": prompt}]
+            provider=g4f.Provider.Koala
+        )
+        return response
+    except Exception as e:
+        return error_handler(e)
+    
+@app.post('/YouAi')
+def geekGPT(messages :list = Body(...)):
+    try:
+        response = g4f.ChatCompletion.create(
+            model=g4f.models.default,
+            messages=messages, #[{"role": "user", "content": prompt}]
+            provider=g4f.Provider.You
+        )
+        return response
+    except Exception as e:
+        return error_handler(e)
+
