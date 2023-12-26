@@ -196,3 +196,15 @@ def geekGPT(messages :list = Body(...)):
         return response
     except Exception as e:
         return error_handler(e)
+
+@app.post('/Aura')
+def aura(messages :list = Body(...)):
+    try:
+        response = g4f.ChatCompletion.create(
+            model=g4f.models.default,
+            messages=messages, #[{"role": "user", "content": prompt}]
+            provider=g4f.Provider.Aura
+        )
+        return response
+    except Exception as e:
+        return error_handler(e)
