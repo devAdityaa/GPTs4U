@@ -232,3 +232,52 @@ def aura(messages :list = Body(...)):
         return response
     except Exception as e:
         return error_handler(e)
+    
+@app.post('/DeepInfra')
+def deepinfra(messages :list = Body(...)):
+    try:
+        response = g4f.ChatCompletion.create(
+            model=g4f.models.default,
+            messages=messages, #[{"role": "user", "content": prompt}]
+            provider=g4f.Provider.DeepInfra
+        )
+        return response
+    except Exception as e:
+        return error_handler(e)
+    
+
+@app.post('/FlowGpt')
+def flowgpt(messages :list = Body(...)):
+    try:
+        response = g4f.ChatCompletion.create(
+            model=g4f.models.default,
+            messages=messages, #[{"role": "user", "content": prompt}]
+            provider=g4f.Provider.FlowGpt
+        )
+        return response
+    except Exception as e:
+        return error_handler(e)
+
+@app.post('/FreeChatgpt')
+def fchatgpt(messages :list = Body(...)):
+    try:
+        response = g4f.ChatCompletion.create(
+            model=g4f.models.default,
+            messages=messages, #[{"role": "user", "content": prompt}]
+            provider=g4f.Provider.FreeChatgpt
+        )
+        return response
+    except Exception as e:
+        return error_handler(e)
+    
+@app.post('/ChatForAi')
+def chat4ai(messages :list = Body(...)):
+    try:
+        response = g4f.ChatCompletion.create(
+            model=g4f.models.default,
+            messages=messages, #[{"role": "user", "content": prompt}]
+            provider=g4f.Provider.ChatForAi
+        )
+        return response
+    except Exception as e:
+        return error_handler(e)
