@@ -232,10 +232,11 @@ def aura(messages :list = Body(...)):
         return response
     except Exception as e:
         return error_handler(e)
+    
 @app.post('/DeepInfra')
-async def deepinfra(messages: list = Body(...)):
+def deepinfra(messages :list = Body(...)):
     try:
-        response = await g4f.ChatCompletion.create(
+        response = g4f.ChatCompletion.create(
             model=g4f.models.default,
             messages=messages, #[{"role": "user", "content": prompt}]
             provider=g4f.Provider.DeepInfra
@@ -243,11 +244,12 @@ async def deepinfra(messages: list = Body(...)):
         return response
     except Exception as e:
         return error_handler(e)
+    
 
 @app.post('/FlowGpt')
-async def flowgpt(messages :list = Body(...)):
+def flowgpt(messages :list = Body(...)):
     try:
-        response = await g4f.ChatCompletion.create(
+        response = g4f.ChatCompletion.create(
             model=g4f.models.default,
             messages=messages, #[{"role": "user", "content": prompt}]
             provider=g4f.Provider.FlowGpt
@@ -257,9 +259,9 @@ async def flowgpt(messages :list = Body(...)):
         return error_handler(e)
 
 @app.post('/FreeChatgpt')
-async def fchatgpt(messages :list = Body(...)):
+def fchatgpt(messages :list = Body(...)):
     try:
-        response = await g4f.ChatCompletion.create(
+        response = g4f.ChatCompletion.create(
             model=g4f.models.default,
             messages=messages, #[{"role": "user", "content": prompt}]
             provider=g4f.Provider.FreeChatgpt
